@@ -24,8 +24,8 @@ import Image from "../../public/vite.svg";
 export default function ModuleComponent({ data, isOpen, toggleIsOpen }) {
  return (
   <>
-   <div className={styles.moduleBox} onClick={toggleIsOpen}>
-    <div className={styles.moduleBoxTitle}>
+   <div className={styles.moduleBox} >
+    <div className={styles.moduleBoxTitle} onClick={toggleIsOpen} >
      <h4>{data.name}</h4>
      {isOpen ? (
       <BiUpArrowAlt className={styles.moduleBoxIcon}  />
