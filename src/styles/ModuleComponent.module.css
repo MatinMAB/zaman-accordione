@@ -1,0 +1,73 @@
+.moduleBox {
+ background-color: #f5f5dc;
+ padding: 3px;
+ border-radius: 6px;
+ overflow: hidden;
+ cursor: pointer;
+}
+
+.moduleBoxTitle {
+ font-size: 24px;
+ height: 60px;
+ padding: 0 10px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.moduleBoxIcon {
+ font-size: 24px;
+ cursor: pointer;
+ color: #888863;
+}
+
+.moduleBoxDownloadIcon {
+ border: 1px solid #888863;
+ width: 45px;
+ height: 45px;
+ padding: 10px;
+ border-radius: 50%;
+}
+
+.moduleBoxContent {
+ display: flex;
+ flex-direction: column;
+ row-gap: 3px;
+ opacity: 1;
+}
+
+.moduleBoxContent > div {
+ background-color: #fff;
+ padding: 25px;
+}
+
+.moduleBoxContent_description {
+ font-size: 18px;
+}
+.moduleBoxContent_description img {
+ text-align: center;
+ display: block;
+ width: 150px;
+ margin: 0 auto;
+ margin-top: 30px;
+}
+
+.moduleBoxContent_media {
+ display: flex;
+ align-items: stretch;
+ column-gap: 12px;
+}
+
+.moduleBoxContent_media div:nth-child(2) {
+ flex-grow: 1;
+}
+
+.moduleBoxContent_media h3 {
+ margin: 0 0 10px;
+ cursor: pointer;
+ color: rgb(0, 145, 255);
+}
+
+.moduleBoxContent_downloadLink {
+ align-self: center;
+}

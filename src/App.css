@@ -1,0 +1,22 @@
+.accordioneBox {
+ width: 1024px;
+
+ margin: 40px auto;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.accordioneBox_header {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+ column-gap: 12px;
+}
+
+.accordioneBox_modulesList ul {
+ list-style-type: none;
+}
+.accordioneBox_modulesList ul li {
+ margin: 16px 0;
+}
