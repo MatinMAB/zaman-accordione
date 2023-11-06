@@ -1,5 +1,5 @@
 //React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Utils
 import { modules } from "./utils/modules";
@@ -10,24 +10,30 @@ import "./App.css";
 //Components
 import ModuleComponent from "./components/ModuleComponent";
 
-
 function App() {
- const [isOpen1, setIsOpen1] = useState(false);
- const [isOpen2, setIsOpen2] = useState(false);
+ const [modulesState, setModulesState] = useState([]);
 
- const toggleIsOpen1 = () => {
-  setIsOpen1(!isOpen1);
- };
- const toggleIsOpen2 = () => {
-  setIsOpen2(!isOpen2);
+ useEffect(() => {
+  //Fetching Data from Server and bring it in to moduleState
+  setModulesState(modules.map((module) => ({ ...module, isExpanded: false })));
+ }, []);
+
+ const handleActive = (id) => {
+  setModulesState(
+   modulesState.map((item) => {
+    if (item.id === id) {
+     return { ...item, isExpanded: !item.isExpanded };
+    } else {
+     return item;
+    }
+   })
+  );
  };
  const collapse = () => {
-  setIsOpen1(false);
-  setIsOpen2(false);
+  setModulesState(modulesState.map((item) => ({ ...item, isExpanded: false })));
  };
  const expand = () => {
-  setIsOpen1(true);
-  setIsOpen2(true);
+  setModulesState(modulesState.map((item) => ({ ...item, isExpanded: true })));
  };
 
  return (
@@ -40,27 +46,11 @@ function App() {
     <div className="accordioneBox_modulesList">
      <ul>
       {
-       //  modules.map((module) => (
-       //  <li key={module.id}>
-       //   <ModuleComponent data={module} />
-       //  </li>
-       // ))
-       <>
-        <li>
-         <ModuleComponent
-          data={modules[0]}
-          isOpen={isOpen1}
-          toggleIsOpen={toggleIsOpen1}
-         />
+       modulesState.map((module) => (
+        <li key={module.id}>
+         <ModuleComponent data={module} handleActive={handleActive} />
         </li>
-        <li>
-         <ModuleComponent
-          data={modules[1]}
-          isOpen={isOpen2}
-          toggleIsOpen={toggleIsOpen2}
-         />
-        </li>
-       </>
+       ))
       }
      </ul>
     </div>

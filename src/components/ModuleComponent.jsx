@@ -20,20 +20,22 @@ import Media from "../shared/Media";
 //image
 import Image from "../../public/vite.svg";
 
-
-export default function ModuleComponent({ data, isOpen, toggleIsOpen }) {
+export default function ModuleComponent({ data, handleActive }) {
  return (
   <>
-   <div className={styles.moduleBox} >
-    <div className={styles.moduleBoxTitle} onClick={toggleIsOpen} >
-     <h4>{data.name}</h4>
-     {isOpen ? (
-      <BiUpArrowAlt className={styles.moduleBoxIcon}  />
+   <div className={styles.moduleBox}>
+    <div
+     className={styles.moduleBoxTitle}
+     onClick={() => handleActive(data.id)}
+    >
+     <h4>{data.title}</h4>
+     {data.isExpanded ? (
+      <BiUpArrowAlt className={styles.moduleBoxIcon} />
      ) : (
       <BiDownArrowAlt className={styles.moduleBoxIcon} />
      )}
     </div>
-    {isOpen && (
+    {data.isExpanded && (
      <div className={styles.moduleBoxContent}>
       <div className={styles.moduleBoxContent_description}>
        <p>{data.description}</p>
