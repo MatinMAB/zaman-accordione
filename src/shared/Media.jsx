@@ -4,7 +4,7 @@ import styles from "../styles/ModuleComponent.module.css";
 //react-icons
 import { BiDownload } from "react-icons/bi";
 
-export default function Media({ title, Description, Icon, downloadLink }) {
+export default function Media({ title, Description,Icon , downloadLink }) {
  return (
   <div className={styles.moduleBoxContent_media}>
    <span>

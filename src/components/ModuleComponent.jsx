@@ -5,20 +5,10 @@ import React from "react";
 import styles from "../styles/ModuleComponent.module.css";
 
 //React-icons
-import {
- BiDownArrowAlt,
- BiSolidVideo,
- BiQuestionMark,
- BiUpArrowAlt,
-} from "react-icons/bi";
-import { HiMiniDocumentCheck } from "react-icons/hi2";
-import { RiAttachment2 } from "react-icons/ri";
+import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 
 //Components
 import Media from "../shared/Media";
-
-//image
-import Image from "../../public/vite.svg";
 
 export default function ModuleComponent({ data, handleActive }) {
  return (
@@ -39,34 +29,16 @@ export default function ModuleComponent({ data, handleActive }) {
      <div className={styles.moduleBoxContent}>
       <div className={styles.moduleBoxContent_description}>
        <p>{data.description}</p>
-       {data.hasImage && <img src={Image} alt="simple vite logo" />}
+       {data.imageUrl && <img src={data.imageUrl} alt="simple vite logo" />}
       </div>
-      {data.linkDescription && (
-       <Media
-        title="Link"
-        Description={data.linkDescription}
-        Icon={RiAttachment2}
-       />
-      )}
-      {data.video && (
-       <Media
-        title="Video"
-        Description={data.video.description}
-        Icon={BiSolidVideo}
-        downloadLink={data.video.downloadLink}
-       />
-      )}
-      {data.document && (
-       <Media
-        title="Document"
-        Description={data.document.description}
-        Icon={HiMiniDocumentCheck}
-        downloadLink={data.document.downloadLink}
-       />
-      )}
-      {data.tests.map((test, index) => (
+      {data.content.map((media, index) => (
        <React.Fragment key={index}>
-        <Media title={test} Icon={BiQuestionMark} />
+        <Media
+         title={media.type}
+         Description={media.description}
+         downloadLink={media.downloadLink}
+         Icon={media.icon}
+        />
        </React.Fragment>
       ))}
      </div>
